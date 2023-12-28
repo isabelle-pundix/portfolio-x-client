@@ -1,0 +1,11 @@
+[
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }],
+    "name": "getNativeBalance",
+    "inputs": [
+      { "type": "address", "name": "userAddress", "internalType": "address" }
+    ]
+  }
+]
