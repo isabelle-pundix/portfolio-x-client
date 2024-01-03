@@ -7,6 +7,52 @@ import type { BAVA, BAVAInterface } from "../BAVA";
 
 const _abi = [
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_bavaToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_stakingToken",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_userDepFee",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "_devaddr",
+        type: "address",
+      },
+      {
+        internalType: "uint256[]",
+        name: "_blockDeltaStartStage",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "_blockDeltaEndStage",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "_userFeeStage",
+        type: "uint256[]",
+      },
+      {
+        internalType: "uint256",
+        name: "_PERCENT_LOCK_BONUS_REWARD",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
     anonymous: false,
     inputs: [
       {

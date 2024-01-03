@@ -90,6 +90,7 @@ export const fetchGlp = createAsyncThunk(
         const decimals = contract_decimal;
         const price_wei = contract_price.answer;
         const glp_token_price = parseFloat(formatUnits(price_wei, decimals));
+        console.log("glp token",glp_token_price)
         const contract_vault_asset =
           await glpLeverageVaultContract.totalAssets();
         tvl =
@@ -129,6 +130,7 @@ export const fetchGlp = createAsyncThunk(
 
           const apr = glp_vault_leverage ? glp_apr * (1 + ((glp_vault_leverage - 1) * (1 / (glp_vault_leverage) + (1 - (1 / (glp_vault_leverage) + 0.1 + stableRatio))))) : 0
           apy = Number(apr + apr_arr_upgradeable)
+          
         }
       }
 

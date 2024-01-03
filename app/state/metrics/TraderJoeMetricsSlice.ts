@@ -126,6 +126,15 @@ export interface TraderJoeVaultSnapshot {
     "AVAX-USDT",
   ];
 
+  const multiplier = {
+    "BAVA-USDC.e": 0,
+    "BAVA-AVAX": 0,
+    "BAVA-USDC": 0,
+    "AVAX-USDT": 2,
+    "AVAX-USDC": 2,
+    "USDC-USDC.e": 2,
+}
+
   export const fetchTraderJoe = createAsyncThunk(
     "updater/fetchTraderJoe",
     async (_, thunkAPI) => {
@@ -148,7 +157,7 @@ export interface TraderJoeVaultSnapshot {
           const sum = apr_1 + apr_2;
           const apy =
             Number(((1 + (apr_1 * 0.05 + apr_2) / 36500) ** 365 - 1) * 100 + apr_1);
-          const tvl = Number(data["AllData"]["TVLUpgradeable"][dataIndex]["tvl"]);
+          const tvl = multiplier[vaultName as keyof typeof multiplier] * 10000 + Number(data["AllData"]["TVLUpgradeable"][dataIndex]["tvl"]);
   
           return {
             ...TraderJoeVaults.vaults.find(

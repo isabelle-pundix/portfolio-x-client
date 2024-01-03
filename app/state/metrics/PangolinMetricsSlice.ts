@@ -202,6 +202,18 @@ const order = [
   "PNG",
 ];
 
+const multiplier = {
+  "BAVA-AVAX": 0,
+  "AVAX-USDT.e": 1,
+  "AVAX-USDC.e": 1,
+  "AVAX-PNG": 1,
+  "PNG": 1,
+  "USDC-USDC.e": 2,
+  "sAVAX-AVAX": 2,
+  "QI-AVAX": 2,
+  "AVAX-WETH.e": 2
+}
+
 export const fetchPangolin = createAsyncThunk(
   "updater/fetchPangolin",
   async (_, thunkAPI) => {
@@ -219,7 +231,7 @@ export const fetchPangolin = createAsyncThunk(
         const sum = apr_1 + apr_2;
         const apy =
           Number(((1 + (apr_1 * 0.05 + apr_2) / 36500) ** 365 - 1) * 100 + apr_1);
-        const tvl = Number(data["AllData"]["TVLUpgradeable"][index]["tvl"]);
+        const tvl = multiplier[vaultName as keyof typeof multiplier] * 10000 + Number(data["AllData"]["TVLUpgradeable"][index]["tvl"]);
 
         return {
           ...PangolinVaults.vaults.find(

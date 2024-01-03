@@ -43,39 +43,43 @@ export interface BAVAVaultSnapshot {
   export const fetchBava = createAsyncThunk(
     "updater/fetchBava",
     async (_, thunkAPI) => {
-      const data = await getBaklavaVaultMetrics();
-  
-      if (data) {
-          const bava_price = parseFloat(data["AllData"]["TokenPrice"]["1"]["bavaPrice"]);
+        try {
+            const data = await getBaklavaVaultMetrics();
 
-          const contract: BAVA | null = getBAVAContract();
-  
-          let reward_rate: number = 0;
-          let total_supply: number = 0;
-          let apy: number = 0;
-          let tvl: number = 0;
-  
-          if (contract) {
-            const contract_reward_rate = await contract.rewardRate();
-            reward_rate = Number(contract_reward_rate);
-            const contract_total_supply = await contract.totalSupply();
-            total_supply = Number(contract_total_supply);
-            apy = reward_rate / total_supply * 31556926 * 100;
-            tvl = Number(parseFloat(formatUnits(contract_total_supply, 18)) * bava_price)
-            
-          }
+            if (data) {
+                const bava_price = parseFloat(data["AllData"]["TokenPrice"]["1"]["bavaPrice"]);
 
-          const updatedVault = {
-            ...BAVAVaults.vaults[0],
-            apy,
-            tvl,
-          };
-  
-        console.log("Updated Vault", updatedVault);
-        thunkAPI.dispatch(updateBavaData(updatedVault));
-      }
+                const contract: BAVA | null = getBAVAContract();
+
+                let reward_rate: number = 0;
+                let total_supply: number = 0;
+                let apy: number = 0;
+                let tvl: number = 0;
+
+                if (contract) {
+                    const contract_reward_rate = await contract.rewardRate();
+                    reward_rate = Number(contract_reward_rate);
+                    const contract_total_supply = await contract.totalSupply();
+                    total_supply = Number(contract_total_supply);
+                    apy = reward_rate / total_supply * 31556926 * 100;
+                    tvl = Number(parseFloat(formatUnits(contract_total_supply, 18)) * bava_price);
+                }
+
+                const updatedVault = {
+                    ...BAVAVaults.vaults[0],
+                    apy,
+                    tvl,
+                };
+
+                console.log("Updated Vault", updatedVault);
+                thunkAPI.dispatch(updateBavaData(updatedVault));
+            }
+        } catch (error) {
+            console.error("Error fetching Bava data:", error);
+        }
     }
-  );
+);
+
 
   export const BavaSlice = createSlice({
     name: "BavaData",
