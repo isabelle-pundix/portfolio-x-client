@@ -26,9 +26,7 @@ export const fetchPrices = createAsyncThunk(
     );
 
     const data = await getTokenPrices(currenciesArr);
-    console.log("price data", data)
     if (data) {
-        console.log("Here");
       thunkAPI.dispatch(updateTokenPrices(data));
       
     }

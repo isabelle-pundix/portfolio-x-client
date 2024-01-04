@@ -167,7 +167,6 @@ export interface TraderJoeVaultSnapshot {
             tvl,
           };
         });
-        console.log("Updated Vaults", updatedVaults);
         thunkAPI.dispatch(updateTraderJoeData(updatedVaults));
       }
     }

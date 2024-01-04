@@ -31,7 +31,6 @@ export const retrieveLiquidityPosMeta = (_tokensState: TokensState, _pricesState
             userAddress: _tokensState.liquidityPositions.data.users[0].id,
             liquidityPositions: _liquidityPositionsUpdated,
         }
-        console.log("liquidity pos", liquidityPositionsUpdated)
         return liquidityPositionsUpdated
     } else {
         return null

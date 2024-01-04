@@ -43,8 +43,6 @@ export default function SwipeableTemporaryDrawer() {
     };
 
   const handleItemSelection = (index: number) => {
-    console.log("Item selected index: ", index);
-
     switch (index) {
       case 0:
         router.push("/assetdashboard");

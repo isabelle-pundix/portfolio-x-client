@@ -16,13 +16,11 @@ export default function ClientApplication({ children }: any) {
   const dispatch = useAppDispatch();
   const auth = useAppSelector(selectAuth);
   const prices = useAppSelector(selectPrices);
-  console.log("Prices", prices)
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
  useEffect(() => {
   const handleStorageChange = () => {
     const storedWalletAddress = localStorage.getItem("walletAddress");
-    console.log("Local storage", storedWalletAddress);
     setWalletAddress(storedWalletAddress);
   };
 
@@ -44,7 +42,6 @@ export default function ClientApplication({ children }: any) {
         undefined,
         { withCredentials: true }
       );
-      console.log(response);
       if (response.status === 200) {
         dispatch(setAccessToken(response.data.accessToken))
       }

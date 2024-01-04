@@ -47,7 +47,6 @@ export const walletLogin = createAsyncThunk("auth/walletlogin", async (walletAdd
                 withCredentials: true
             }
         );
-        console.log("Response", response);
         return response.data
     }
     catch (error: any) {

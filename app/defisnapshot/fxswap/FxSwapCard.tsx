@@ -16,7 +16,6 @@ import LPIcon from "../LPIcon";
 import { Constants } from "@/app/constants";
 import { FarmsSnapshot } from "@/app/constants/FxSwapFarmsSnapshot";
 import { getTokenMetaData2 } from "@/app/utils/Token";
-import { getFxSwapFarmMetrics } from "@/app/utils/Metrics";
 import { useAppSelector } from "@/app/state/ReduxHooks";
 import Link from "@mui/material/Link";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -33,7 +32,6 @@ const FxSwapCard: React.FC<FxSwapCardProps> = ({ snapshot, calculateTvl }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const metrics = useAppSelector((state) => state.metrics);
-  console.log("Metrics", metrics)
 
   const aprArr = Object.values(metrics.metrics.fxswap.AllData.apr);
   const apyArr = Object.values(metrics.metrics.fxswap.AllData.apyDaily);

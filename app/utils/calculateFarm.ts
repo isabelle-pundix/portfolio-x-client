@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { retrieveFarmPosMeta } from "./Farm";
 import { Constants } from "../constants";
 import { getFarmData } from "./FxSwap";
-import exp from "constants";
 
 export const retrieveFarmPos = () => {
   const userAddress =
@@ -50,7 +49,6 @@ export const calculateFarmRows = () => {
       useEffect(() => {
         if (updatedFarmPos.farms) {
             const updatedRows = getFarmData(updatedFarmPos.farms, fxPrice);
-            console.log("Updated rows", updatedRows)
             if (updatedRows.length > 0) {
                 setFarmRows(updatedRows);
             } else {

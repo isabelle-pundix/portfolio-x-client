@@ -6,7 +6,7 @@ import {
   CardContent,
   CircularProgress,
 } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import FxSwapPoolGroup from "../dataComponents/FxSwapPoolGroup";
 import { calculatePoolRows } from "@/app/utils/calculateLiquidity";
 

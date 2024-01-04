@@ -1,7 +1,5 @@
-import { BigNumberish, Contract, ContractInterface, ethers } from "ethers";
+import { BigNumberish, ethers } from "ethers";
 import { BalanceOfUtil, BalanceOfUtil2 } from "../abis/types";
-import { useAppSelector } from "../state/ReduxHooks";
-import { selectUser } from "../state/user/userSlice";
 import { supportedTokensJSON } from "../constants/Tokens";
 import { TokenBalances } from "../state/walletBalance/walletBalanceSlice";
 import { getBalanceOfUtilContract, getBalanceOfUtil2Contract } from "./getContracts";
@@ -47,9 +45,6 @@ function getContractForNativeTokens(): BalanceOfUtil2 | null {
 export const fetchUserBalance = async (walletAddress: string) => {
   const tokenBalances: TokenBalances[] = [];
   if (walletAddress) {
-    console.log("Wallet address: ", walletAddress);
-    console.log("Token addresses in string array: ", tokenAddresses);
-
     const nativeTokenContract = getContractForNativeTokens();
     if (nativeTokenContract) {
       const rawFxBalance: BigNumberish =
@@ -58,7 +53,6 @@ export const fetchUserBalance = async (walletAddress: string) => {
         tokenSymbol: "FX",
         tokenBalance: parseFloat(ethers.formatUnits(rawFxBalance, 18)),
       };
-      console.log("fxBalanceInfo", fxBalanceInfo);
       tokenBalances.push(fxBalanceInfo);
     }
 
@@ -69,7 +63,6 @@ export const fetchUserBalance = async (walletAddress: string) => {
           tokenAddresses,
           walletAddress
         );
-      console.log("Raw token balances: ", rawTokenBalances);
 
       let balanceArr: number[] = [];
 
@@ -92,7 +85,6 @@ export const fetchUserBalance = async (walletAddress: string) => {
             tokenSymbol: tokenSymbol,
             tokenBalance: bal,
           };
-          console.log("Token Bal: ", tokenBal);
           tokenBalances.push(tokenBal);
         });
       } else {
@@ -100,6 +92,5 @@ export const fetchUserBalance = async (walletAddress: string) => {
       }
     }
   }
-  console.log("Token balances: ", tokenBalances);
   return tokenBalances;
 };

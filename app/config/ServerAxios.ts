@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Constants } from "../constants";
 
 const serveraxios = axios.create({
     baseURL: "https://localhost:5000/",

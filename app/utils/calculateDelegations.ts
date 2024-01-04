@@ -1,8 +1,5 @@
-import { useState } from "react";
-import { useAppSelector } from "../state/ReduxHooks";
 import { getDelegatorDelegations } from "./Delegations";
 import {
-  getWithdrawals0,
   getWithdrawals1,
   getReward,
   getValidatorMoniker,

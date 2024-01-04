@@ -1,4 +1,4 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getBaklavaVaultMetrics } from "@/app/utils/Metrics";
 import { RootState } from "../store";
 import {
@@ -90,7 +90,6 @@ export const fetchGlp = createAsyncThunk(
         const decimals = contract_decimal;
         const price_wei = contract_price.answer;
         const glp_token_price = parseFloat(formatUnits(price_wei, decimals));
-        console.log("glp token",glp_token_price)
         const contract_vault_asset =
           await glpLeverageVaultContract.totalAssets();
         tvl =
@@ -139,7 +138,6 @@ export const fetchGlp = createAsyncThunk(
         apy,
         tvl,
       };
-      console.log("Updated Vault", updatedVault);
       thunkAPI.dispatch(updateGlpData(updatedVault));
     }
   }

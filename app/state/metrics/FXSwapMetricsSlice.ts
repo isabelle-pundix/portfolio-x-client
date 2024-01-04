@@ -147,7 +147,6 @@ export const fetchFXSwap = createAsyncThunk(
         };
       });
 
-      console.log("Updated Vaults", updatedVaults);
       thunkAPI.dispatch(updateFXSwapData(updatedVaults));
     }
   }

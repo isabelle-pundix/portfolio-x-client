@@ -15,7 +15,6 @@ export const getFxEvmEvents = async (_evmSender: string, _evmRecipient: string):
         &events=message.sender%3D'${_evmSender}'\
         &events=ethereum_tx.recipient%3D'${_evmRecipient}'`
     ).then(res => res.data) as FxEvmEvents
-    //console.log(res);
     return res
 }
 

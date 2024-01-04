@@ -70,8 +70,6 @@ export interface BAVAVaultSnapshot {
                     apy,
                     tvl,
                 };
-
-                console.log("Updated Vault", updatedVault);
                 thunkAPI.dispatch(updateBavaData(updatedVault));
             }
         } catch (error) {

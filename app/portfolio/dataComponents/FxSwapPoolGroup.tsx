@@ -90,7 +90,6 @@ const FxSwapPoolGroup = () => {
   }, []);
 
   // useEffect(() => {
-  //   //console.log(dataUpdated)
   //   if (dataUpdated.length >= 1 && dataUpdated[0].farmTotalValue !== "0") {
   //     setIsCalculating(false);
   //   } else {

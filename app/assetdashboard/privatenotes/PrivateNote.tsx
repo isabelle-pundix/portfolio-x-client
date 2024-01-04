@@ -17,7 +17,6 @@ import {
   addNote,
   deleteNote,
   editNote,
-  selectAllPrivateNotes,
   selectPrivateNoteById,
   selectPrivateNoteIds,
 } from "@/app/state/privateNote/privateNoteSlice";

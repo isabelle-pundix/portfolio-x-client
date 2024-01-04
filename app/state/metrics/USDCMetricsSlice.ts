@@ -126,7 +126,6 @@ export const fetchUsdc = createAsyncThunk(
         apy,
         tvl,
       };
-      console.log("Updated Vault", updatedVault);
       thunkAPI.dispatch(updateUsdcData(updatedVault));
     }
     

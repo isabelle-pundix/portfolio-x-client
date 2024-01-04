@@ -4,12 +4,11 @@ import Chip from "@mui/material/Chip";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Constants } from "@/app/constants";
-import {Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
-import {Menu, MenuItem} from "@mui/material";
-import { useEffect } from "react";
+import { Menu, MenuItem } from "@mui/material";
 
 interface ChipData {
   key: number;

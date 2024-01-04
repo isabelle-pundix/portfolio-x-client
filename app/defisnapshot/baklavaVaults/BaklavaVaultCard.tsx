@@ -18,12 +18,10 @@ import ChipsArray from "./BaklavaVaultsChips";
 import Link from "@mui/material/Link";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { Grid } from "@mui/material";
-import { getBaklavaVaultMetrics } from "@/app/utils/Metrics";
 import { useAppDispatch, useAppSelector } from "@/app/state/ReduxHooks";
 import {
   fetchFXCore,
   selectFXCoreData,
-  FXCoreVaultSnapshot
 } from "@/app/state/metrics/FXCoreMetricsSlice";
 import {
   fetchFXSwap,

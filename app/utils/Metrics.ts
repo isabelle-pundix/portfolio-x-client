@@ -12,7 +12,6 @@ const uniswapSubgraph = UNISWAPV3_MAINNET_SUBGRAPH;
 export const getFxSwapFarmMetrics = async () => {
     try {
         const res = await axios.get(Constants.Endpoint.FXSWAPFARMMETRICS_ENDPOINT);
-        console.log("Res: ", res);
         return res.data as FxswapFarmMetric
     } catch (error) {
         console.log(error);
@@ -23,7 +22,6 @@ export const getFxSwapFarmMetrics = async () => {
 export const getBaklavaVaultMetrics = async () => {
     try {
         const res = await axios.get(Constants.Endpoint.BAKLAVAVAULTMETRICS_ENDPOINT);
-        console.log("Res :", res);
         return res.data; 
     } catch (error) {
         console.log(error);

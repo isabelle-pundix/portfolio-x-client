@@ -10,7 +10,6 @@ const UniswapV3 = () => {
   useEffect(() => {
     const fetchUniswapData = async () => {
       const pool1Data = await getUniswapV3FxEthMetrics();
-      // console.log("Pool 1 Data: ", pool1Data);
       if (pool1Data) {
         setUniswapv3Pools((state) => ({
           ...state,

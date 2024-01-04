@@ -57,8 +57,6 @@ export default function PieActiveArc({
     let value: number = series.data[index].formattedValue;
     let color: string = series.data[index].color;
 
-    console.log("Series", series);
-
     return (
       <Box p={2} display="flex" alignItems="center" position="relative">
         <div

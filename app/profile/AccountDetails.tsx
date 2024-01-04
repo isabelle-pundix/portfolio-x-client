@@ -22,14 +22,11 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import LongMenu from "./WalletOptions";
 import {
   WalletAddress,
-  WalletAddressModel,
   deleteWalletAddress,
   editWalletAddress,
   selectAllWalletAddresses,
 } from "../state/walletAddress/walletAddressSlice";
 import Button from "@mui/material/Button";
-import { RootState } from "../state/store";
-import { useSelector } from "react-redux";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { fetchAndUpdateUser, selectUser } from "../state/user/userSlice";
 import { useTheme } from "@mui/material/styles";
@@ -72,9 +69,7 @@ const AccountDetails = () => {
   useEffect(() => {
     if (receivedSelection === "Details") {
       setRenderSummary(false);
-      console.log("Details selected");
     } else if (receivedSelection === "Delete" && selectedIndex != null) {
-      console.log("Delete wallet selected");
       confirmDeleteWallet();
     }
   }, [receivedSelection, selectedIndex]);
@@ -137,9 +132,6 @@ const AccountDetails = () => {
     if (index < 0 || index >= fullUserAddressKVP.length) {
       return null;
     }
-
-    console.log("Render summary:", renderSummary);
-    console.log("Details selected");
 
     const pair = fullUserAddressKVP[index];
 
@@ -244,8 +236,6 @@ const AccountDetails = () => {
       setTimeout(() => {
         setIsCopied(false);
       }, 2000);
-
-      console.log("Wallet address copied to clipboard:", walletAddress);
     } catch (error) {
       console.error("Failed to copy wallet address:", error);
     }
@@ -257,14 +247,12 @@ const AccountDetails = () => {
 
   const confirmDeleteWallet = () => {
     setDeleteDialogOpen(true);
-    console.log("handler", deleteDialogOpen);
   };
 
   const handleDeleteWallet = () => {
     setDeleteDialogOpen(false);
     if (selectedIndex != null) {
       const walletAddressToDelete = fullUserAddressKVP[selectedIndex];
-      console.log("Wallet address to delete", walletAddressToDelete.id);
       dispatch(deleteWalletAddress(walletAddressToDelete.id)).then((result) => {
         if (deleteWalletAddress.fulfilled.match(result)) {
           dispatch(fetchAndUpdateUser());
@@ -277,8 +265,6 @@ const AccountDetails = () => {
           }
           // await render
           setRenderSummary(true);
-
-          console.log("Wallet address deleted:", walletAddressToDelete);
         } else if (deleteWalletAddress.rejected.match(result)) {
           const error = result.payload;
           console.error("Failed to delete wallet address:", error);
@@ -300,11 +286,9 @@ const AccountDetails = () => {
         name: newWalletName,
       };
       dispatch(editWalletAddress(updatedWalletAddress)).then((result) => {
-        console.log("Success or not? ");
         if (editWalletAddress.fulfilled.match(result)) {
           setRenderSummary(true);
           dispatch(fetchAndUpdateUser());
-          console.log("Wallet address edited:", walletAddressToEdit);
         } else if (editWalletAddress.rejected.match(result)) {
           const error = result.payload;
           console.error("Failed to edit wallet address:", error);

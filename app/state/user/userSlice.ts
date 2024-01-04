@@ -48,7 +48,6 @@ export const fetchAndUpdateUser = createAsyncThunk("user/fetchAndUpdateUser", as
             }
         }
     );
-    console.log(data);
     if (data) {
         thunkAPI.dispatch(setUser(data.user))
     }
@@ -97,7 +96,6 @@ export const userSlice = createSlice({
         },
         // setWalletAddress: (state, action) => {
         //     // state.user.walletAddress = action.payload;
-        //     console.log("Action payload", action.payload)
         //     if (action.payload != null) {
         //         localStorage.setItem('walletAddress', action.payload)
         //     }

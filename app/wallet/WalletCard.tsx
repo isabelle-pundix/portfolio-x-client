@@ -47,13 +47,10 @@ function WalletCard({
   }, [updatedBalances])
 
   useEffect(() => {
-    console.log("isLoading: ", isLoading);
     loading(isLoading);
   }, [isLoading]);
 
-  useEffect(() => {
-    console.log("Row data", updatedBalances);
-  
+  useEffect(() => {  
     if (updatedBalances) {
       const sumOfTokenValue = updatedBalances.reduce((result, item) => {
         return result + item.tokenValue;

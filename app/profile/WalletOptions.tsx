@@ -5,9 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import InfoIcon from "@mui/icons-material/Info";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
-import { current } from "@reduxjs/toolkit";
 
 export interface LongMenuProps {
     sendSelectionLabel: (label: string) => void;
@@ -26,7 +24,6 @@ export default function LongMenu({sendSelectionLabel}: LongMenuProps) {
   const handleClickDetails = (event: React.MouseEvent<HTMLElement>, selectionLabel: string) => {
     setAnchorEl(event.currentTarget);
     // const selectionLabel = event.currentTarget?.textContent || '';
-    console.log("selection label: ", selectionLabel);
     setCurrentSelection(selectionLabel);
     handleClose();
   };

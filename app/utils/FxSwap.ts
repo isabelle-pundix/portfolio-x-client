@@ -115,8 +115,6 @@ export const getFarmData = (_farmPositions: FarmPosition[], _rewardsPrice: numbe
             lpTokenValue: farmPosition.lpTokenValue,
         }
 
-        console.log("farm data", farmData)
-
         if ((Number(farmData.deposit) === 0 && Number(farmData.rewards) === 0)
             || (farmData.deposit === undefined && farmData.rewards === undefined)
             || !farmData.active) {
@@ -138,20 +136,17 @@ export const getFarmData = (_farmPositions: FarmPosition[], _rewardsPrice: numbe
  */
 export const matchPoolAndFarm = (poolRows: PoolData[], farmRows: FarmData[]) => {
     if (poolRows.length < 1 || farmRows.length < 1 || !poolRows[0].id || !farmRows[0].id) {
-        console.log("1");
         return poolRows
     }
     farmRows.forEach((farm) => {
         const pool = poolRows.filter(poolRow => poolRow.id === farm.id)[0];
         if (pool === undefined) {
-            console.log("2");
             return
         }
         pool.depositedLPFarm = farm.deposit;
         pool.farmTotalValue = farm.value;
         pool.lpTokenValue = farm.lpTokenValue;
         pool.rewardValue = farm.rewardValue;
-        console.log("3");
     })
     return poolRows
 }

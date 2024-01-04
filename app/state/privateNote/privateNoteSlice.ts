@@ -122,7 +122,6 @@ export const deleteNote = createAsyncThunk<
                 }
             }
         );
-        // console.log(res)
         return { id }
     } catch (error: any) {
         return thunkAPI.rejectWithValue({
@@ -151,7 +150,6 @@ export const privateNotesSlice = createSlice({
             .addCase(addNote.fulfilled, privateNotesAdapter.addOne)
             .addCase(deleteNote.fulfilled, (state, action) => privateNotesAdapter.removeOne(state, action.payload.id))
             .addCase(editNote.fulfilled, (state, action) => {
-                console.log(action.payload)
                 privateNotesAdapter.updateOne(state, action.payload)
             })
     }

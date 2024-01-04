@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import { Constants } from "@/app/constants";
 import FxSwapCard from "./FxSwapCard";
-import { getFxSwapFarmMetrics } from "@/app/utils/Metrics";
-import { useAppDispatch, useAppSelector } from "@/app/state/ReduxHooks";
-import { updateFxswapFarmMetrics } from "@/app/state/metrics/metricActions";
 
 const FxSwap = () => {
-  const dispatch = useAppDispatch();
-
   const [fxswapTvl, setFxswapTvl] = useState(0);
 
   const fxswapFarmsSnapshot = Constants.FxSwapFarmsSnapshot.FXFarms;
@@ -16,16 +11,6 @@ const FxSwap = () => {
   const calculateFxswapTvl = (tvlArr: number[]) => {
     setFxswapTvl(tvlArr.reduce((acc, i): number => acc + i));
   };
-
-  // useEffect(() => {
-  //   const fetchFxswapData = async () => {
-  //     const fxswapFarmMetrics = await getFxSwapFarmMetrics();
-  //     if (fxswapFarmMetrics && fxswapFarmMetrics.AllData) {
-  //       dispatch(updateFxswapFarmMetrics(fxswapFarmMetrics))
-  //     }
-  //   }
-  //   fetchFxswapData();
-  // }, [])
 
   return (
     <Box

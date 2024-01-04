@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import serveraxios from "@/app/config/ServerAxios";
-import { disconnect } from "@wagmi/core";
 import { fetchUserBalance } from "@/app/utils/WalletBalanceMulticall";
 
 export interface TokenBalances {
@@ -31,7 +29,6 @@ export interface TokenBalances {
     if (walletAddress) { 
         const userBalance = await fetchUserBalance(walletAddress);
         if (userBalance) {
-            console.log("Updating?")
             thunkAPI.dispatch(updateTokenBalances(userBalance))
         }
     }
@@ -45,7 +42,6 @@ export interface TokenBalances {
             state.tokenBalances = null
         },
         updateTokenBalances: (state, action) => {
-            console.log("Updating token balances", action.payload)
             state.tokenBalances = action.payload
         }
     }

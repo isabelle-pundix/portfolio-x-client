@@ -1,4 +1,4 @@
-import { Contract, ContractInterface, ethers, InterfaceAbi } from "ethers";
+import { Contract, ethers, InterfaceAbi } from "ethers";
 import { Constants } from "../constants";
 
 import FXSwapV2FactoryAbi from "../abis/FXSwapV2Factory.json";

@@ -155,7 +155,6 @@ export const getWithdrawals1 = async (_address: string, _module: string, _v: boo
                 }
             }
         );
-        //console.log(result.data);
         return result.data as TxnLogEvents
     } catch (error: any) {
         console.error("An error occurred while getting withdrawals");
@@ -340,7 +339,6 @@ const getStakeTxs = async (sender: string, offset: number, pagination_limit: num
         _order = 2;
     }
     const res = await axios.get(`https://fx-rest.functionx.io/cosmos/tx/v1beta1/txs?events=message.sender%3D'${sender}'&events=message.module%3D'staking'&pagination.offset=${offset}&pagination.limit=${pagination_limit}&order_by=${_order}`)
-    console.log("res from get stake txs", res)
     return res.data as FxTransactionsData
 }
 
@@ -367,7 +365,6 @@ export const calculateAveragePriceForNew = async (cosmosAddress: string, delegat
     const pagination_limit = 100
     // get stake transactions in all pages
     const firstPageData = await getStakeTxs(cosmosAddress, 0, pagination_limit, "ASC")
-    //console.log(firstPageData);
     // return null if no delegation tx
     if (firstPageData.tx_responses.length === 0) return null
     //const lastPage = Math.ceil(Number(firstPageData.pagination.total) / 100) //pagination is now null
@@ -467,7 +464,6 @@ export const calculateAveragePrice = async (cosmosAddress: string, delegations: 
 
     // get stake transactions in all pages (in descending order)
     const firstPageData = await getStakeTxs(cosmosAddress, 0, pagination_limit, "DESC");
-    console.log("firstPageData", firstPageData);
 
     // return if no delegation tx
     if (firstPageData.tx_responses.length === 0) return null

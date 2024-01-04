@@ -5,13 +5,9 @@ import authReducer from "./authSlice";
 import tokens from "./tokens/tokensReducer"
 import farms from "./liquidityFarms/farmReducer";
 import metrics from "./metrics/metricsReducer"
-import { updateVersion } from "./global/actions";
-// import { blockNumberMiddleware } from "./middleware/blockNumber";
-// import { userMiddleware } from "./middleware/user";
 import privateNotesReducer from "./privateNote/privateNoteSlice"
 import alertReducer from "./alertSlice";
 import walletAddressReducer from "./walletAddress/walletAddressSlice";
-// import addWalletAddressMessageReducer from "./walletAddress/addWalletAddressMessageSlice";
 import walletBalanceReducer from "./walletBalance/walletBalanceSlice";
 import pricesReducer from "./prices/pricesSlice";
 import fxSwapReducer from "./metrics/FXSwapMetricsSlice"
@@ -35,7 +31,6 @@ export const store = configureStore({
         alert: alertReducer,
         walletBalances: walletBalanceReducer,
         walletAddresses: walletAddressReducer,
-        // addWalletAddressMessage: addWalletAddressMessageReducer,
         fxSwap: fxSwapReducer,
         pangolin: pangolinReducer,
         traderJoe: traderJoeReducer,
@@ -44,14 +39,7 @@ export const store = configureStore({
         glp: glpReducer,
         usdc: usdcReducer,
     }
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware().concat([
-    //         blockNumberMiddleware.middleware,
-    //         userMiddleware.middleware
-    //     ]),
 });
-
-// store.dispatch(updateVersion());
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

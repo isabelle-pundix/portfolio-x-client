@@ -61,7 +61,6 @@ export interface FXCoreVaultSnapshot {
         total_assets = Number(parseFloat(formatUnits(contract_total_assets, 18)));
         
         tvl = Number(Number(total_assets) * fx_price);
-        console.log("total assets", total_assets)
       }
 
       const updatedVault = {
@@ -70,7 +69,6 @@ export interface FXCoreVaultSnapshot {
         tvl,
       };
 
-      console.log("Updated Vault", updatedVault);
       thunkAPI.dispatch(updateFXCoreData(updatedVault));
     }
   }

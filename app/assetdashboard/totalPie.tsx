@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 import { calculateFarmRows } from "../utils/calculateFarm";
 import { calculatePoolRows } from "../utils/calculateLiquidity";
 import { useWalletData } from "../utils/calculateWalletValue";

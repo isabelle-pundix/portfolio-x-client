@@ -58,9 +58,6 @@ const BlockUpdateListener = () => {
   }, [windowVisible]);
 
   useEffect(() => {
-    console.log(startBlockNumber);
-    console.log(lastBlockNumber);
-
     if (lastBlockNumber - startBlockNumber >= 2 || walletAddress !== null) {
       console.log("2 new blocks");
       setStartBlockNumber(lastBlockNumber);
@@ -78,7 +75,6 @@ const BlockUpdateListener = () => {
             const liquidityPositions = await getLiquidityPositions(
               walletAddress
             );
-            console.log("Liquidity pos", liquidityPositions);
             // if (liquidityPositions) {
               dispatch(updateLiquidityPositions(liquidityPositions?.data));
             // } 
@@ -119,7 +115,6 @@ const BlockUpdateListener = () => {
 
             // auth.success will change to false on every re-render
             // if (auth.success != false) {
-            console.log("Farms block listender", farms);
             dispatch(updateFarms(farms));
           } else {
             return;

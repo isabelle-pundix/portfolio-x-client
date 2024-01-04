@@ -10,7 +10,6 @@ import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import CustomButton from "../components/buttons/CustomButton";
 import SwipeableTemporaryDrawer from "../components/buttons/MenuDrawer";
 import Divider from "@mui/material/Divider";
-import UserIcon from "@mui/icons-material/Person";
 import UserWalletAdd from "../wallet/UserWalletAdd";
 import { useAppSelector } from "../state/ReduxHooks";
 import { selectUser } from "../state/user/userSlice";

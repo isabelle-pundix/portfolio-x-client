@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../state/ReduxHooks";
+import { useAppSelector } from "../state/ReduxHooks";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
@@ -9,27 +9,15 @@ import TableBody from "@mui/material/TableBody";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
-import { StyledTableCell, StyledTableRow } from "./DataTable";
+import { StyledTableCell } from "./DataTable";
 import TableCell from "@mui/material/TableCell";
-import { Paper } from "@mui/material";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import LinearProgress from "@mui/material/LinearProgress";
 import {
-  calculateAveragePrice,
-  calculateAveragePriceForNew,
-  calculateTotalWithdrawals,
-  DelegationsAveragePriceInfo,
   getCosmosAddress,
-  getDelegatorDelegations,
-  getOldCosmosAddress,
-  getReward,
-  getValidatorMoniker,
-  getWithdrawals1,
 } from "../utils/Delegations";
 import { Constants } from "../constants";
-import Big from "big.js";
-import { editUserInfo, selectUser } from "../state/user/userSlice";
 import {
   retrieveDelegationInfo,
   retrieveWithdrawalInfo,
@@ -106,7 +94,6 @@ const Delegations = ({
           fxPrice
         );
         if (delegationRes) {
-          console.log("delegationRes", delegationRes);
           const { totalValue, rewardSum, delegations } = delegationRes;
           setTotalDelegationRewards(rewardSum.toString());
           setValue(totalValue.toNumber());

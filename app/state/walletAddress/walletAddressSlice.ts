@@ -9,7 +9,6 @@ import {
 import { RootState } from "../store";
 import serveraxios from "@/app/config/ServerAxios";
 import { fetchAndUpdateUser } from "../user/userSlice";
-import { walletLogin } from "../authSlice";
 import { disconnect } from "@wagmi/core";
 
 export interface WalletAddress {
@@ -110,8 +109,6 @@ export const editWalletAddress = createAsyncThunk<
         }
       );
       const payload = { id, name };
-      console.log(payload);
-      console.log("Auth: ", state.auth.auth.accessToken);
       return payload;
     } catch (error: any) {
       return thunkAPI.rejectWithValue({
@@ -165,7 +162,6 @@ export const walletAddressSlice = createSlice({
             .addCase(addWalletAddress.fulfilled, walletAddressAdapter.addOne)
             .addCase(deleteWalletAddress.fulfilled, (state, action) => walletAddressAdapter.removeOne(state, action.payload.id))
             .addCase(editWalletAddress.fulfilled, (state, action) => {
-                console.log(action.payload)
                 walletAddressAdapter.updateOne(state, action.payload)
             })
     }

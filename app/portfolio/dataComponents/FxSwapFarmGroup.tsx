@@ -5,7 +5,7 @@ import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
-import { StyledTableRow, StyledTableCell } from "../DataTable";
+import { StyledTableCell } from "../DataTable";
 import TableCell from "@mui/material/TableCell";
 import { Link, Paper } from "@mui/material";
 import { useTheme } from "@mui/material";

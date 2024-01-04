@@ -1,4 +1,4 @@
-import { WalletAddress, WalletAddressModel } from "../state/walletAddress/walletAddressSlice";
+import { WalletAddress } from "../state/walletAddress/walletAddressSlice";
 
 export const FullWalletAddressNameGenerator = (walletAddresses: WalletAddress[]) => {
   // const user = useAppSelector(selectUser);
@@ -6,8 +6,6 @@ export const FullWalletAddressNameGenerator = (walletAddresses: WalletAddress[])
   walletAddresses.forEach((address: any) => {
     userAddresses.push(address);
   });
-  console.log("return", userAddresses)
-
   return userAddresses;
 };
 

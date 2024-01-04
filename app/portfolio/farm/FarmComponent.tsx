@@ -1,9 +1,6 @@
 import { Grid, Box, Typography, Card, CardContent, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
-import { Constants } from "@/app/constants";
 import FxSwapFarmGroup from "../dataComponents/FxSwapFarmGroup";
-import { getFarmData } from "@/app/utils/FxSwap";
-import { useAppSelector } from "@/app/state/ReduxHooks";
 import { calculateFarmRows } from "@/app/utils/calculateFarm";
 
 const FarmComponent = () => {

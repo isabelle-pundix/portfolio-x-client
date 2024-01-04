@@ -10,7 +10,7 @@ import { Menu } from "@mui/base/Menu";
 import { MenuButton } from "@mui/base/MenuButton";
 import { MenuItem, menuItemClasses } from "@mui/base/MenuItem";
 import { styled } from "@mui/system";
-import { WalletAddress, WalletAddressModel, selectAllWalletAddresses } from "../state/walletAddress/walletAddressSlice";
+import { WalletAddress, selectAllWalletAddresses } from "../state/walletAddress/walletAddressSlice";
 import { ShortWalletAddressNameGenerator } from "../profile/WalletAddressNameGenerator";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddWeb3Wallet from "./AddWeb3Wallet";
@@ -49,11 +49,8 @@ const UserWalletAdd: React.FC<Props> = ({ showAddress }) => {
   }, [walletAddress, selectedAddress]);
 
   const setSelectedAddressHandler = (walletAddress: string, index: number) => {
-    console.log("Wallet address selected: ", walletAddress);
     const selectedAddObj: WalletAddress = allWalletAddresses[index];
-    console.log("Wallet address selected obj: ", selectedAddObj);
     const selectedAddStr: string = selectedAddObj.walletAddress;
-    console.log("Wallet address selected string: ", selectedAddStr);
     setSelectedAddress(walletAddress);
     const storageChangeEvent = new Event("storage");
     localStorage.setItem("walletAddress", selectedAddStr);
@@ -124,7 +121,6 @@ const UserWalletAdd: React.FC<Props> = ({ showAddress }) => {
 
   const handleOpenModalAddWallet = () => {
     setOpenWalletModal(true);
-    console.log("add wallet selected");
   };
 
   const handleCloseModalAddWallet = () => {

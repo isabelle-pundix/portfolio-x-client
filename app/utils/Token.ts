@@ -1,10 +1,7 @@
 import { AxiosHeaders } from "axios";
 import serveraxios from "../config/ServerAxios";
 import { Constants } from "@/app/constants";
-import { FarmsSingle } from "../state/liquidityFarms/farmReducer";
 import { PricesState, TokenPrice } from "../state/prices/pricesSlice";
-import { getFXSwapV2PairContract } from "./getContracts";
-import { ethers } from "ethers";
 
 export interface CmcResponse {
     config: any;
@@ -111,7 +108,6 @@ export const getTokenPrices = async (_currencies: string[]) => {
 
             }
         );
-        console.log(res);
         const prices: any = parseTokenPricesV2(res, _currencies);
         const fxToken: any = prices.find((token: any) => token.symbol === 'FX');
 

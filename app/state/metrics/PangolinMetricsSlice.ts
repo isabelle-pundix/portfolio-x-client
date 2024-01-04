@@ -244,7 +244,6 @@ export const fetchPangolin = createAsyncThunk(
 
       updatedVaults = updatedVaults.filter((_, index) => index !== 8);
 
-      console.log("Updated Vaults", updatedVaults);
       thunkAPI.dispatch(updatePangolinData(updatedVaults));
     }
   }

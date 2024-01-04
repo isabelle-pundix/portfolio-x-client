@@ -38,7 +38,6 @@ export const alertSlice = createSlice({
             })
             .addCase(editUserInfo.rejected, (state,action)=>{
                 state.alert = true
-                console.log(action)
                 state.title = `${action.payload?.message}`
                 state.severity = 'error'
             })
@@ -49,13 +48,11 @@ export const alertSlice = createSlice({
             })
             .addCase(addWalletAddress.rejected, (state, action) => {
                 state.alert = true
-                console.log(action)
                 state.title = `${action.payload?.message}`
                 state.severity = 'error'
             })
             .addCase(editWalletAddress.rejected, (state,action)=>{
                 state.alert = true
-                console.log(action)
                 state.title = `${action.payload?.message}`
                 state.severity = 'error'
             })

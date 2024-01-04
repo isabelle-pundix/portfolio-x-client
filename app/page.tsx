@@ -1,10 +1,7 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useAppSelector } from "./state/ReduxHooks";
-import { retrieveLiquidityPosMeta } from "./utils/Liquidity";
-import { retrieveFarmPosMeta } from "./utils/Farm";
 import { selectUser } from "./state/user/userSlice";
 import { useRouter } from "next/navigation";
 
