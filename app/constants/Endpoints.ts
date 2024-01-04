@@ -7,4 +7,4 @@ export const FXSWAP_MAINNET_SUBGRAPH = "https://graph-node.functionx.io/subgraph
 export const FXSWAPFARMMETRICS_ENDPOINT = "https://ap-southeast-1.aws.data.mongodb-api.com/app/data-rjjms/endpoint/tvl_prod";
 export const UNISWAPV3_MAINNET_SUBGRAPH = "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3";
 export const BAKLAVAVAULTMETRICS_ENDPOINT = "https://ap-southeast-1.aws.data.mongodb-api.com/app/bdl-uyejj/endpoint/tvl";
-export const AVALANCHE_ENDPOINT = "https://avalanche.drpc.org";
+export const AVALANCHE_ENDPOINT = "https://avalanche-c-chain.publicnode.com";
