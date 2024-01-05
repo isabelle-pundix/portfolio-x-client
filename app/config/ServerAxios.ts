@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const serveraxios = axios.create({
-    baseURL: "https://localhost:5000/",
+    baseURL: "https://localhost:5004/",
 });
 
 serveraxios.interceptors.response.use(undefined, error => {
