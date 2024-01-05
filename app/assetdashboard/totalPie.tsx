@@ -1,8 +1,8 @@
 import Typography from "@mui/material/Typography";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Box } from "@mui/material";
-import { calculateFarmRows } from "../utils/calculateFarm";
-import { calculatePoolRows } from "../utils/calculateLiquidity";
+import { useCalculateFarmRows } from "../utils/calculateFarm";
+import { useCalculatePoolRows } from "../utils/calculateLiquidity";
 import { useWalletData } from "../utils/calculateWalletValue";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../state/ReduxHooks";
@@ -19,13 +19,13 @@ interface ValueDataItem {
 
 export default function TotalAssetPie() {
   const [valueData, setValueData] = useState<ValueDataItem[]>([]);
-  let arrTotal: number[] = [];
+  // let arrTotal: number[] = [];
   const [assetTotal, setAssetTotal] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const allFarmData = calculateFarmRows();
+  const allFarmData = useCalculateFarmRows();
   const farmTotal = allFarmData.total;
-  const poolData = calculatePoolRows();
+  const poolData = useCalculatePoolRows();
   const liquidityTotal = poolData.total;
   const updatedBalances = useWalletData();
   const walletTotal =
@@ -77,12 +77,12 @@ export default function TotalAssetPie() {
     if (addr) {
       fetchDelegationInfo();
     }
-  }, [addr]);
+  }, [addr, fxPrice]);
 
   const orderArr = ["Wallet", "Farm", "Liquidity", "Delegation"];
 
   useEffect(() => {
-    arrTotal = [walletTotal, farmTotal, liquidityTotal, delegationsTotal];
+    let arrTotal = [walletTotal, farmTotal, liquidityTotal, delegationsTotal];
     const total = walletTotal + farmTotal + liquidityTotal + delegationsTotal;
     setAssetTotal(total);
 

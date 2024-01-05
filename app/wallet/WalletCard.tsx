@@ -12,6 +12,7 @@ import { Logos } from "../constants/Tokens";
 import { useWalletData } from "../utils/calculateWalletValue";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
+import Image from "next/image";
 
 const headings = ["Token", "Balance", "Value"];
 
@@ -94,11 +95,12 @@ function WalletCard({
                       sx={{ borderBottom: 0 }}
                     >
                       <Box sx={{ display: "flex", alignItems: "center" }}>
-                        <img
+                        <Image
                           src={
                             Logos[rowData.tokenSymbol as keyof typeof Logos] ||
                             ""
                           }
+                          alt=""
                           width={30}
                           height={30}
                           style={{ marginRight: "10px" }}

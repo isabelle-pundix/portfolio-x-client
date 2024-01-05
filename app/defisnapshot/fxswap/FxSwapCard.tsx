@@ -55,13 +55,13 @@ const FxSwapCard: React.FC<FxSwapCardProps> = ({ snapshot, calculateTvl }) => {
 
   useEffect(() => {
     calculateTvl(liquidityFarms.map((farm) => parseFloat(farm.tvl as string)));
-  }, [liquidityFarms]);
+  }, [liquidityFarms, calculateTvl]);
 
   return (
     <Box>
       {isMobile ? (
         liquidityFarms.map((farm, index) => (
-          <Card sx={{ mb: 2, backgroundColor: "rgb(26,26,26)" }}>
+          <Card key={index} sx={{ mb: 2, backgroundColor: "rgb(26,26,26)" }}>
             <CardContent sx={{ "&:last-child": { paddingBottom: "16px" } }}>
               <Box sx={{ display: "flex", alignItems: "center"}}>
                 <LPIcon

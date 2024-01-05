@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import BaklavaVaultCard from "./BaklavaVaultCard"
 
@@ -6,9 +6,9 @@ import BaklavaVaultCard from "./BaklavaVaultCard"
 const BaklavaVault = () => {
   const [baklavaTvl, setBaklavaTvl] = useState(0);
 
-  const calculateBaklavaVaultTvl = (tvlArr: number[]) => {
+  const calculateBaklavaVaultTvl = useCallback((tvlArr: number[]) => {
     setBaklavaTvl(tvlArr.reduce((acc, i) => acc + i, 0));
-  };
+  }, []);
   
   return (
     <Box

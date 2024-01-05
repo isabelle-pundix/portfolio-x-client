@@ -12,7 +12,7 @@ import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import LPIcon from "@/app/defisnapshot/LPIcon";
 import LinearProgress from "@mui/material/LinearProgress";
-import { calculateFarmRows } from "@/app/utils/calculateFarm";
+import { useCalculateFarmRows } from "@/app/utils/calculateFarm";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
@@ -22,7 +22,7 @@ const FxSwapFarmGroup = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [isLoading, setIsLoading] = useState(true);
 
-  const farmData = calculateFarmRows();
+  const farmData = useCalculateFarmRows();
 
   const modifyValueString = (str: string) => {
     const indexOfDot = str.indexOf(".");
@@ -56,7 +56,7 @@ const FxSwapFarmGroup = () => {
     return (
       <Box>
         {farmData.data.map((row, index) => (
-          <Card sx={{ backgroundColor: "rgb(26,26,26)" }}>
+          <Card key={index} sx={{ backgroundColor: "rgb(26,26,26)" }}>
             <CardContent sx={{ "&:last-child": { paddingBottom: "16px" } }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <LPIcon

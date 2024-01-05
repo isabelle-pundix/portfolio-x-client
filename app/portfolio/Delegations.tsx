@@ -122,7 +122,7 @@ const Delegations = ({
     if (addr && !fetching) {
       fetchDelegationInfo(addr);
     }
-  }, [addr]);
+  }, [addr, fetchDelegationInfo, fetching]);
 
   useEffect(() => {
     onTotalDelegationsChange(value);
@@ -150,7 +150,7 @@ const Delegations = ({
         <Box>
           {delegationState &&
             Object.keys(delegationState).map((validator, index) => (
-              <Card sx={{ backgroundColor: "rgb(26,26,26)" }}>
+              <Card key={index} sx={{ backgroundColor: "rgb(26,26,26)" }}>
                 <CardContent sx={{ "&:last-child": { paddingBottom: "16px" } }}>
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <Box>

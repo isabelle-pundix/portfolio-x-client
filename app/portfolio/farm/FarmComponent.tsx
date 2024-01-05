@@ -1,10 +1,10 @@
 import { Grid, Box, Typography, Card, CardContent, CircularProgress } from "@mui/material";
 import { useState, useEffect } from "react";
 import FxSwapFarmGroup from "../dataComponents/FxSwapFarmGroup";
-import { calculateFarmRows } from "@/app/utils/calculateFarm";
+import { useCalculateFarmRows } from "@/app/utils/calculateFarm";
 
 const FarmComponent = () => {
-  const farmData = calculateFarmRows();
+  const farmData = useCalculateFarmRows();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

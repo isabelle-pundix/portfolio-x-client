@@ -124,7 +124,7 @@ const BlockUpdateListener = () => {
       };
       fetchUpdates();
     }
-  }, [lastBlockNumber, startBlockNumber, walletAddress]);
+  }, [lastBlockNumber, startBlockNumber, walletAddress, dispatch]);
 
   return null;
 };

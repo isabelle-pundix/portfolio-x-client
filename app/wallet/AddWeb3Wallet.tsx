@@ -81,7 +81,7 @@ const AddWeb3Wallet: React.FC<Web3WalletProp> = ({
         dispatch(fetchAndUpdateUser());
       });
     }
-  }, [address]);
+  }, [address, dispatch]);
 
   useEffect(() => {
     if (error) {

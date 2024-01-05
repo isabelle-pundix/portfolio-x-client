@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import FxSwapPoolGroup from "../dataComponents/FxSwapPoolGroup";
-import { calculatePoolRows } from "@/app/utils/calculateLiquidity";
+import { useCalculatePoolRows } from "@/app/utils/calculateLiquidity";
 
 const LiquidityComponent= () => {
-  const poolData = calculatePoolRows();
+  const poolData = useCalculatePoolRows();
 
   const [isLoading, setIsLoading] = useState(true);
 

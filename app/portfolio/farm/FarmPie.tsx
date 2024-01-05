@@ -1,7 +1,7 @@
 import { Typography, CircularProgress } from "@mui/material";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Box, Stack } from "@mui/material";
-import { calculateFarmRows } from "@/app/utils/calculateFarm";
+import { useCalculateFarmRows } from "@/app/utils/calculateFarm";
 import { useState, useEffect } from "react";
 
 export default function FarmPie() {
@@ -27,7 +27,7 @@ export default function FarmPie() {
     return () => clearTimeout(timer);
   }, [addr]);
 
-  const allFarmData = calculateFarmRows();
+  const allFarmData = useCalculateFarmRows();
   const total = allFarmData.total;
   const farmData = allFarmData.data;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Grid, Box, Typography } from "@mui/material";
 import { Constants } from "@/app/constants";
 import FxSwapCard from "./FxSwapCard";
@@ -8,9 +8,9 @@ const FxSwap = () => {
 
   const fxswapFarmsSnapshot = Constants.FxSwapFarmsSnapshot.FXFarms;
 
-  const calculateFxswapTvl = (tvlArr: number[]) => {
+  const calculateFxswapTvl = useCallback((tvlArr: number[]) => {
     setFxswapTvl(tvlArr.reduce((acc, i): number => acc + i));
-  };
+  }, []);
 
   return (
     <Box

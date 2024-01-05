@@ -4,7 +4,7 @@ import { retrieveFarmPosMeta } from "./Farm";
 import { Constants } from "../constants";
 import { getFarmData } from "./FxSwap";
 
-export const retrieveFarmPos = () => {
+export const useRetrieveFarmPos = () => {
   const userAddress =
     typeof window !== "undefined"
       ? window.localStorage.getItem("walletAddress")
@@ -29,8 +29,8 @@ export const retrieveFarmPos = () => {
   return { updatedFarmPos };
 };
 
-export const calculateFarmRows = () => {
-    const { updatedFarmPos } = retrieveFarmPos();
+export const useCalculateFarmRows = () => {
+    const { updatedFarmPos } = useRetrieveFarmPos();
     const [farmRows, setFarmRows] = useState<FarmData[]>(
         Constants.Data.defaultFarmRow
       );

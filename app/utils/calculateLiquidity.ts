@@ -15,7 +15,7 @@ import {
   calcUnrealizedGL1,
 } from "./FxSwap";
 
-export const retrieveLiquidityPos = () => {
+export const useRetrieveLiquidityPos = () => {
   const userAddress =
     typeof window !== "undefined"
       ? window.localStorage.getItem("walletAddress")
@@ -57,8 +57,8 @@ export const retrieveLiquidityPos = () => {
   return { updatedLiquidityPos, updatedFarmPos };
 };
 
-export const calculatePoolRows = () => {
-  const { updatedLiquidityPos, updatedFarmPos } = retrieveLiquidityPos();
+export const useCalculatePoolRows = () => {
+  const { updatedLiquidityPos, updatedFarmPos } = useRetrieveLiquidityPos();
   const [poolRows, setPoolRows] = useState<PoolData[]>(
     Constants.Data.defaultPoolRow
   );
@@ -121,8 +121,8 @@ export const calculatePoolRows = () => {
   return poolData;
 };
 
-export const calculateFxSwapPoolGroup = () => {
-  const poolData = calculatePoolRows();
+export const useCalculateFxSwapPoolGroup = () => {
+  const poolData = useCalculatePoolRows();
   const addr = localStorage.getItem("walletAddress");
   const [additions, setAdditions] = useState<LiquidityAdds | null>(null);
   const [burns, setBurns] = useState<LiquidityBurns | null>(null);

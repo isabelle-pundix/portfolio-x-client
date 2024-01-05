@@ -2,8 +2,8 @@ import { Typography, CircularProgress } from "@mui/material";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Box, Stack } from "@mui/material";
 import {
-  calculateFxSwapPoolGroup,
-  calculatePoolRows,
+  useCalculateFxSwapPoolGroup,
+  useCalculatePoolRows,
 } from "@/app/utils/calculateLiquidity";
 import { useState, useEffect } from "react";
 
@@ -30,8 +30,8 @@ export default function LiquidityPie() {
     return () => clearTimeout(timer);
   }, [addr]);
 
-  const liquidityData = calculateFxSwapPoolGroup();
-  const poolData = calculatePoolRows();
+  const liquidityData = useCalculateFxSwapPoolGroup();
+  const poolData = useCalculatePoolRows();
   const total = poolData.total;
 
   if (liquidityData) {

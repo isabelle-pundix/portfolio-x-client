@@ -100,7 +100,7 @@ const BaklavaVaultCard: React.FC<BaklavaVaultCardProps> = ({ calculateTvl }) => 
     return () => {
       clearInterval(intervalId);
     };
-  }, []); 
+  }, [dispatch]); 
 
   useEffect(() => {
     if (mappedData.length > 0) {
@@ -119,7 +119,7 @@ const BaklavaVaultCard: React.FC<BaklavaVaultCardProps> = ({ calculateTvl }) => 
 
   useEffect(() => {
     calculateTvl(filteredVaults.map((vault) => vault.tvl));
-  }, [filteredVaults]);
+  }, [filteredVaults, calculateTvl]);
 
   return (
     <Box sx={{ paddingBottom: "30px" }}>
@@ -133,6 +133,7 @@ const BaklavaVaultCard: React.FC<BaklavaVaultCardProps> = ({ calculateTvl }) => 
         <Box>
           {filteredVaults.map((vault, index) => (
             <Card
+              key={index}
               sx={{ backgroundColor: "rgb(26,26,26)", marginBottom: "16px" }}
             >
               <CardContent sx={{ "&:last-child": { paddingBottom: "16px" } }}>

@@ -75,7 +75,7 @@ export default function DelegationsPie() {
     if (addr) {
       fetchDelegationInfo();
     }
-  }, [addr]);
+  }, [addr, fxPrice]);
 
   const CustomItemTooltipContent = (props: any) => {
     const { itemData, series } = props;

@@ -69,7 +69,7 @@ const Web3Wallet = () => {
         dispatch(fetchAndUpdateUser());
       });
     }
-  }, [address]);
+  }, [address, dispatch]);
 
   const renderModal = () => {
     if (isConnected && connector) {

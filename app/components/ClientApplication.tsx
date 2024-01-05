@@ -52,14 +52,14 @@ export default function ClientApplication({ children }: any) {
 
     return setTimeout(getAccessTokenAndRefreshToken, 15 * 60 * 1000)
 
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     const timeoutId = getAccessTokenAndRefreshToken()
     return () => {
       timeoutId as unknown as number
     }
-  }, [setAccessToken])
+  }, [getAccessTokenAndRefreshToken])
 
   // User
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function ClientApplication({ children }: any) {
     ) {
       dispatch(fetchAndUpdateUser());
     }
-  }, [auth.accessToken]);
+  }, [auth.accessToken, dispatch]);
 
   // Token balances & Prices
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function ClientApplication({ children }: any) {
     }, 60000 * 30);
 
     return () => clearInterval(intervalId);
-  }, [walletAddress]);
+  }, [walletAddress, dispatch]);
 
   return (
     <>

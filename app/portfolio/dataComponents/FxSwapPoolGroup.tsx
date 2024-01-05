@@ -30,8 +30,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Web3 from "web3";
 import { getFxEvmEvents } from "@/app/utils/evm";
 import {
-  calculateFxSwapPoolGroup,
-  calculatePoolRows,
+  useCalculateFxSwapPoolGroup,
+  useCalculatePoolRows,
 } from "@/app/utils/calculateLiquidity";
 
 const formulaText =
@@ -48,8 +48,8 @@ const FxSwapPoolGroup = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const dataUpdated = calculateFxSwapPoolGroup();
-  const poolData = calculatePoolRows();
+  const dataUpdated = useCalculateFxSwapPoolGroup();
+  const poolData = useCalculatePoolRows();
 
   const modifyValueString = (str: string) => {
     const indexOfDot = str.indexOf(".");
@@ -119,7 +119,7 @@ const FxSwapPoolGroup = () => {
     return (
       <Box>
         {dataUpdated.map((row, index) => (
-          <Card sx={{ backgroundColor: "rgb(26,26,26)"}}>
+          <Card key={index} sx={{ backgroundColor: "rgb(26,26,26)"}}>
             <CardContent sx={{ "&:last-child": { paddingBottom: "16px" } }}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <LPIcon

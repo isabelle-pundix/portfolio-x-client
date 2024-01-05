@@ -120,6 +120,8 @@ const PrivateNoteExcerpt: React.FC<PrivateNoteExcerptProps> = React.memo(
   }
 );
 
+PrivateNoteExcerpt.displayName = 'PrivateNoteExcerpt';
+
 const PrivateNoteList: React.FC = () => {
   const privateNoteIds = useAppSelector(selectPrivateNoteIds);
   const state = store.getState();
@@ -171,7 +173,7 @@ const PrivateNoteList: React.FC = () => {
   useEffect(() => {
     //to render the list properly when deleting last item in the last page
     if (page !== 1 && page > numberOfPages) setPage(numberOfPages);
-  }, [numberOfPages]);
+  }, [numberOfPages, page]);
 
   return (
     <Box>

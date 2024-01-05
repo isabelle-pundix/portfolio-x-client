@@ -22,7 +22,7 @@ const AlertComp: React.FC<AlertCompProps> = () => {
     return () => {
       clearTimeout(timeOut);
     };
-  }, [alert]);
+  }, [alert, dispatch]);
 
   return (
     <Fade in={alert.alert}>

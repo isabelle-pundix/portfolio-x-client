@@ -19,7 +19,7 @@ export default function LongMenu({sendSelectionLabel}: LongMenuProps) {
 
   useEffect(() => {
     sendSelectionLabel(currentSelection)
-  }, [currentSelection])
+  }, [currentSelection, sendSelectionLabel])
 
   const handleClickDetails = (event: React.MouseEvent<HTMLElement>, selectionLabel: string) => {
     setAnchorEl(event.currentTarget);
