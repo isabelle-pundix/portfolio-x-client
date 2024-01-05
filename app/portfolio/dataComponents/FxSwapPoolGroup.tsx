@@ -27,7 +27,6 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import Tooltip from "@mui/material/Tooltip";
 import CircularProgress from "@mui/material/CircularProgress";
-import Web3 from "web3";
 import { getFxEvmEvents } from "@/app/utils/evm";
 import {
   useCalculateFxSwapPoolGroup,
