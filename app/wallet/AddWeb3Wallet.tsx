@@ -73,12 +73,14 @@ const AddWeb3Wallet: React.FC<Web3WalletProp> = ({
   };
 
   useEffect(() => {
-    if (address != undefined) {
-      dispatch(addWalletAddress({ walletAddress: address })).then(() => {
-        const storageChangeEvent = new Event("storage");
-        localStorage.setItem("walletAddress", address);
-        window.dispatchEvent(storageChangeEvent);
-        dispatch(fetchAndUpdateUser());
+    if (address !== undefined) {
+      dispatch(addWalletAddress({ walletAddress: address })).then((action) => {
+        if (action.type === 'walletAddresses/addWalletAddress/fulfilled') {
+          const storageChangeEvent = new Event("storage");
+          localStorage.setItem("walletAddress", address);
+          window.dispatchEvent(storageChangeEvent);
+          dispatch(fetchAndUpdateUser());
+        }
       });
     }
   }, [address, dispatch]);
